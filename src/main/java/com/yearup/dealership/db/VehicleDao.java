@@ -72,7 +72,7 @@ public class VehicleDao {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return vehicles;
     }
@@ -95,7 +95,7 @@ public class VehicleDao {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return vehicles;
     }
@@ -116,7 +116,7 @@ public class VehicleDao {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return vehicles;
     }
@@ -136,7 +136,7 @@ public class VehicleDao {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return vehicles;
     }
@@ -158,7 +158,7 @@ public class VehicleDao {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return vehicles;
     }
@@ -178,7 +178,7 @@ public class VehicleDao {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return vehicles;
     }
