@@ -15,16 +15,47 @@ public class VehicleDao {
     }
 
     public void addVehicle(Vehicle vehicle) {
-        // TODO: Implement the logic to add a vehicle
+        String query = """
+                INSERT INTO vehicles
+                (VIN, make, model, year, SOLD, color, vehicleType, odometer, price)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""";
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement addVehicleStatement = connection.prepareStatement(query)) {
+
+            addVehicleStatement.setString(1, vehicle.getVin());
+            addVehicleStatement.setString(2, vehicle.getMake());
+            addVehicleStatement.setString(3, vehicle.getModel());
+            addVehicleStatement.setInt(4, vehicle.getYear());
+            addVehicleStatement.setBoolean(5, vehicle.isSold());
+            addVehicleStatement.setString(6, vehicle.getColor());
+            addVehicleStatement.setString(7, vehicle.getVehicleType());
+            addVehicleStatement.setInt(8, vehicle.getOdometer());
+            addVehicleStatement.setDouble(9, vehicle.getPrice());
+
+            addVehicleStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void removeVehicle(String VIN) {
-        // TODO: Implement the logic to remove a vehicle
+        String query = """
+            DELETE FROM vehicles
+            WHERE VIN = ?
+            """;
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, VIN);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
+
     public List<Vehicle> searchByPriceRange(double minPrice, double maxPrice) {
-        // TODO: Implement the logic to search vehicles by price range
-        return new ArrayList<>();
     }
 
     public List<Vehicle> searchByMakeModel(String make, String model) {
